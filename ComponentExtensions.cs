@@ -41,4 +41,9 @@ public static class ComponentExtensions
 
     public static T AddComponent<T>(this Component component) where T : Component =>
         component.gameObject.AddComponent<T>();
+
+    public static bool TryGetComponent<T>(this RaycastHit2D hit, out T component) where T : Component =>
+        hit.collider.TryGetComponent(out component);
+    public static T GetComponent<T>(this RaycastHit2D hit) where T : Component =>
+        hit.collider.GetComponent<T>();
 }
